@@ -1,6 +1,8 @@
 from flask import Flask, request
 import json
 
+Access-Control-Allow-Origin: *
+
 # plant watering database
 database: dict = {}
 with open ("db.json", "r") as f :
