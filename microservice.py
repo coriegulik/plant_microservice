@@ -1,8 +1,6 @@
 from flask import Flask, request
 import json
 
-Access-Control-Allow-Origin: *
-
 # plant watering database
 database: dict = {}
 with open ("db.json", "r") as f :
@@ -20,11 +18,17 @@ def home():
         days = request.args.get('days')
         if plant in database.keys():
             if int(days) >= database[plant]:
-                return "plant needs water"
+                response = "plant needs water"
+                response.headers['Access-Control-Allow-Origin'] = '*'
+                return response
             else:
-                return "plant does not need water"
+                response = "plant does not need water"
+                response.headers['Access-Control-Allow-Origin'] = '*'
+                return response
         else:
-            return "plant is not in the database"
+            response = "plant is not in the database"
+            response.headers['Access-Control-Allow-Origin'] = '*'
+            return response
 
 # driver function
 if __name__ == '__main__':
