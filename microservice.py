@@ -19,16 +19,12 @@ def home():
         if plant in database.keys():
             if int(days) >= database[plant]:
                 response = "plant needs water"
-                response.headers['Access-Control-Allow-Origin'] = '*'
-                return response
             else:
                 response = "plant does not need water"
-                response.headers['Access-Control-Allow-Origin'] = '*'
-                return response
         else:
             response = "plant is not in the database"
-            response.headers['Access-Control-Allow-Origin'] = '*'
-            return response
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
 
 # driver function
 if __name__ == '__main__':
